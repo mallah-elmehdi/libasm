@@ -3,20 +3,36 @@ section	.text
 
 _ft_strcmp:
 	mov rdx, 0
+	mov rax, 0
 
 loop:
 	mov bl, rdi[rdx]
 	mov cl, rsi[rdx]
+
 	CMP bl, cl
-	JNE exit
+	JNE sign
+	
 	CMP bl, BYTE 0
-	JE exit
+	JE sign
+	
 	CMP cl, BYTE 0
-	JE exit
+	JE sign
+	
 	INC rdx
 	JMP loop
 
-exit:
-	SUB bl, cl 
+sign:
+	CMP bl, cl
+	JL ngt
+
+pst:
+	SUB bl, cl
 	mov al, bl
+	ret
+
+ngt:
+	SUB bl, cl
+	neg bl
+	mov al, bl
+	neg rax
 	ret

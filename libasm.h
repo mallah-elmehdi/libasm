@@ -1,35 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   libasm.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emallah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/03 18:20:58 by emallah           #+#    #+#             */
-/*   Updated: 2021/04/03 18:21:00 by emallah          ###   ########.fr       */
+/*   Created: 2021/04/03 18:15:35 by emallah           #+#    #+#             */
+/*   Updated: 2021/04/03 18:15:38 by emallah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libasm.h"
+#ifndef LIBASM_H
+# define LIBASM_H
+# include <errno.h>
+# include <stdio.h>
+# include <stdlib.h>
 
-int	main(void)
-{
-	char	*s0;
-	char	s1[1000];
-	char	*s2;
-	size_t	a;
-	size_t	b;
-
-	s0 = ft_strdup("hello there!\n");
-	s2 = ft_strdup("Test test test\n");
-	a = ft_strlen(s0);
-	b = ft_strlen(s2);
-	ft_write(1, s0, a);
-	ft_write(1, s2, b);
-	ft_strcpy(s1, s2);
-	b = ft_strlen(s1);
-	ft_write(1, s1, b);
-	b = ft_read(1, s1, b);
-	ft_write(1, s1, b);
-	a = ft_strcmp(s0, s1);
-}
+int			ft_strcmp(const char *s1, const char *s2);
+char		*ft_strcpy(char *dst, const char *src);
+char		*ft_strdup(const char *s1);
+size_t		ft_strlen(const char *s);
+ssize_t		ft_write(int fildes, const void *buf, size_t nbyte);
+ssize_t		ft_read(int fildes, void *buf, size_t nbyte);
+#endif
