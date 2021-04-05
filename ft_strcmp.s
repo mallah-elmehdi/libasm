@@ -4,6 +4,8 @@ section	.text
 _ft_strcmp:
 	mov rdx, 0
 	mov rax, 0
+	mov rbx, 0
+	mov rcx, 0
 
 loop:
 	mov bl, rdi[rdx]
@@ -22,17 +24,17 @@ loop:
 	JMP loop
 
 sign:
-	CMP bl, cl
+	CMP rbx, rcx
 	JL ngt
+	JE zero
 
 pst:
-	SUB bl, cl
-	mov al, bl
+	mov rax, 1
 	ret
 
 ngt:
-	SUB bl, cl
-	neg bl
-	mov al, bl
-	neg rax
+	mov rax, -1
+	ret
+
+zero:
 	ret

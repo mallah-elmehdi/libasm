@@ -12,6 +12,7 @@ loop:
 	JMP loop
 
 alloc:
+	INC rbx
 	push rdi
 	mov rdi, rbx
 	call _malloc
@@ -19,10 +20,10 @@ alloc:
 	mov rbx, 0
 
 copy:
-	CMP rdi[rbx], BYTE 0
-	JE exit
 	mov rcx, rdi[rbx]
 	mov rax[rbx], rcx
+	CMP rdi[rbx], BYTE 0
+	JE exit
 	INC rbx
 	JMP copy
 
