@@ -3,11 +3,11 @@ section	.text
 
 _ft_strcpy:
 	mov rax, 0
-	mov rbx, 0
+	mov r8, 0
 
 loop:
-	mov rbx, rsi[rax]
-	mov rdi[rax], rbx
+	mov r8, rsi[rax]
+	mov rdi[rax], r8
 	CMP rsi[rax], BYTE 0
 	JE exit
 	INC rax

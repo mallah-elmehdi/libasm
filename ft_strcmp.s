@@ -4,27 +4,27 @@ section	.text
 _ft_strcmp:
 	mov rdx, 0
 	mov rax, 0
-	mov rbx, 0
-	mov rcx, 0
+	mov r8, 0
+	mov r9, 0
 
 loop:
-	mov bl, rdi[rdx]
-	mov cl, rsi[rdx]
+	mov r8b, rdi[rdx]
+	mov r9b, rsi[rdx]
 
-	CMP bl, cl
+	CMP r8b, r9b
 	JNE sign
 	
-	CMP bl, BYTE 0
+	CMP r8b, BYTE 0
 	JE sign
 	
-	CMP cl, BYTE 0
+	CMP r9b, BYTE 0
 	JE sign
 	
 	INC rdx
 	JMP loop
 
 sign:
-	CMP rbx, rcx
+	CMP r8, r9
 	JL ngt
 	JE zero
 

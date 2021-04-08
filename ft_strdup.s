@@ -3,28 +3,28 @@ section	.text
 	extern  _malloc
 
 _ft_strdup:
-	mov rbx, 0
+	mov r8, 0
 
 loop:
-	CMP rdi[rbx], BYTE 0
+	CMP rdi[r8], BYTE 0
 	JE alloc
-	INC rbx
+	INC r8
 	JMP loop
 
 alloc:
-	INC rbx
+	INC r8
 	push rdi
-	mov rdi, rbx
+	mov rdi, r8
 	call _malloc
 	pop rdi
-	mov rbx, 0
+	mov r8, 0
 
 copy:
-	mov rcx, rdi[rbx]
-	mov rax[rbx], rcx
-	CMP rdi[rbx], BYTE 0
+	mov rcx, rdi[r8]
+	mov rax[r8], rcx
+	CMP rdi[r8], BYTE 0
 	JE exit
-	INC rbx
+	INC r8
 	JMP copy
 
 exit:

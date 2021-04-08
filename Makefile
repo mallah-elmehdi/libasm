@@ -24,7 +24,7 @@ $(NAME):
 all : $(NAME)
 
 clean:
-	@rm -f *.o
+	@rm -fr *.o a.out file_test a.out.dSYM
 
 fclean: clean
 	@rm -f $(NAME)
